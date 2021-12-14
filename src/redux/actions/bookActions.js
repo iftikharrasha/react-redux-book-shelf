@@ -11,3 +11,10 @@ export const removeFromReadingList = (payload) => {
         payload
     }
 }
+
+export const markedToFinishList = (payload) => {
+    return {
+        type: 'MARK_TO_FINISH_LIST',
+        payload
+    }
+}

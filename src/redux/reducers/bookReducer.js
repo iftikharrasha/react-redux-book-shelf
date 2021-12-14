@@ -13,7 +13,11 @@ const bookReducer = (state = initialState, action) => {
             return newState
         }
         case 'REMOVE_FROM_READING_LIST':{
-            const newState = { ...state, readingList: state.readingList.filter((book) => book.id !== action.payload) };
+            const newState = {...state, readingList: state.readingList.filter((book) => book.id !== action.payload )}
+            return newState
+        }
+        case 'MARK_TO_FINISH_LIST':{
+            const newState = {...state, finishedList: [...state.finishedList, action.payload] }
             return newState
         }
 

@@ -6,6 +6,7 @@ import PageLayout from '../components/PageLayout/PageLayout';
 
 const ReadingList = () => {
     const reading = useSelector((state) => state.books.readingList);
+    
     return (
         <PageLayout>
             {
