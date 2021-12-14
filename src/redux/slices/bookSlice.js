@@ -15,5 +15,12 @@ const bookSlice = createSlice({
         removeFromReadingList: (state, action) => {
             state.readingList = state.readingList.filter(book => book.id !== action.payload);
         },
+        markedToFinishList: (state, action) => {
+            state.finishedList.push(action.payload);
+        },
     },
-})
+});
+
+// Action creators are generated for each case reducer function
+export const { addToReadingList, removeFromReadingList, markedToFinishList } = bookSlice.actions;
+export default bookSlice.reducer;
