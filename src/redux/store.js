@@ -1,11 +1,7 @@
-import { combineReducers, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import bookReducer from "./reducers/bookReducer";
+import { configureStore } from '@reduxjs/toolkit'
 
-const rootReducer = combineReducers({
-    books: bookReducer,
+export const store = configureStore({
+  reducer: {
+      
+  },
 })
-
-const store = createStore(rootReducer, composeWithDevTools());
-
-export default store;
