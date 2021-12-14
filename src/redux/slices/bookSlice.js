@@ -1,12 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import books from '../../fakeData/books.json';
+
+export const fetchBooks = createAsyncThunk(
+    'book/fetchBooks',
+    async () => {
+      const response = await fetch('https://redux-book-shelf.herokuapp.com/books')
+      .then(res => res.json())
+      return response.data
+    }
+  )
+
+  //what if we are posting something?
+//   export const postBooks = createAsyncThunk(
+//     'book/postBooks',
+//     async (arg) => {
+//       const response = await fetch('https://redux-book-shelf.herokuapp.com/books')
+//       .then(res => res.json())
+//       return response
+//     }
+//   )
 
 const bookSlice = createSlice({
     name: 'book',
     initialState: {
-        discover: books,
+        discover: [],
         readingList: [],
         finishedList: [],
+        status: 'idle',
     },
     reducers: {
         addToReadingList: (state, action) => {
@@ -18,6 +38,30 @@ const bookSlice = createSlice({
         markedToFinishList: (state, action) => {
             state.finishedList.push(action.payload);
         },
+    },
+    extraReducers: (builder) => {
+        // Add reducers for additional action types here, and handle loading state as needed
+        builder.addCase(fetchBooks.fulfilled, (state, action) => {
+          // Add user to the state array
+          state.discover = action.payload;
+          state.status = 'success';
+        })
+
+        builder.addCase(fetchBooks.pending, (state, action) => {
+            // Add user to the state array
+            state.status = 'pending';
+        })
+
+        builder.addCase(fetchBooks.rejected, (state, action) => {
+            // Add user to the state array
+            state.status = 'error';
+        })
+
+        //add this is there is any more asynchronous actions
+        // builder.addCase(fetchSomethinElse.fulfilled, (state, action) => {
+        //     // Add user to the state array
+        //     state.discover.push(action.payload)
+        //   })
     },
 });
 
