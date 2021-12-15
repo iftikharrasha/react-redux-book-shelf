@@ -1,7 +1,9 @@
-import React from 'react'
-import Header from './Header'
-import Sidebar from './Sidebar'
+import React from 'react';
+import Header from './Header';
+import Sidebar from './Sidebar';
+
 const PageLayout = ({ children }) => {
+
   return (
     <div>
       <Header />

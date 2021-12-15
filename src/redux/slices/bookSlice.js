@@ -8,7 +8,7 @@ export const fetchBooks = createAsyncThunk(
       .then(res => res.json())
       return response.data
     }
-  )
+)
 
   //what if we are posting something?
 //   export const postBooks = createAsyncThunk(
