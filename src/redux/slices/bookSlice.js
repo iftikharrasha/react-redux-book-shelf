@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import books from '../../fakeData/books.json';
 
 export const fetchBooks = createAsyncThunk(
     'book/fetchBooks',
@@ -13,7 +12,7 @@ export const fetchBooks = createAsyncThunk(
   //what if we are posting something?
 //   export const postBooks = createAsyncThunk(
 //     'book/postBooks',
-//     async (arg) => {
+//     async (newPost) => {
 //       const response = await fetch('https://redux-book-shelf.herokuapp.com/books')
 //       .then(res => res.json())
 //       return response
