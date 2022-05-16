@@ -13,7 +13,7 @@ export const fetchBooks = createAsyncThunk(
 //   export const postBooks = createAsyncThunk(
 //     'book/postBooks',
 //     async (newPost) => {
-//       const response = await fetch('https://redux-book-shelf.herokuapp.com/books')
+//       const response = await axios.post('https://redux-book-shelf.herokuapp.com/books', newPost)
 //       .then(res => res.json())
 //       return response
 //     }
@@ -32,6 +32,7 @@ const bookSlice = createSlice({
             state.readingList.push(action.payload);   //here we are mutating directly which wasn't possible before 'IMMER LIBRARY'
         },
         removeFromReadingList: (state, action) => {
+            console.log(state.readingList);
             state.readingList = state.readingList.filter(book => book.id !== action.payload);
         },
         markedToFinishList: (state, action) => {

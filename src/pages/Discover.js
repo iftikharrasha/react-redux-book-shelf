@@ -9,7 +9,7 @@ const Discover = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchBooks());
-    }, [])
+    }, [dispatch])
 
     const discover = useSelector((state) => state.books.discover)
 
